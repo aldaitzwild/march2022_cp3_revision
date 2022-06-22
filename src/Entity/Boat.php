@@ -72,4 +72,13 @@ class Boat
 
         return $this;
     }
+
+    public function isSunk(): bool
+    {
+        foreach ($this->coordinates as $coordinate) {
+            if($coordinate->isHasBeenBombed() == false)
+                return false;
+        }
+        return true;
+    }
 }

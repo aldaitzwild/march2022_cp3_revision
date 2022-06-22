@@ -16,23 +16,23 @@ class BoatFixtures extends Fixture
         $smallBoat2 = new Boat();
 
         $largeBoat->setSize('Large')
-                    ->addCoordinate((new Coordinate())->setX(1)->setY(1))
-                    ->addCoordinate((new Coordinate())->setX(1)->setY(2))
-                    ->addCoordinate((new Coordinate())->setX(1)->setY(3))
-                    ->addCoordinate((new Coordinate())->setX(1)->setY(4))
-                    ->addCoordinate((new Coordinate())->setX(1)->setY(5))
+                    ->addCoordinate((new Coordinate())->setX(1)->setY(1)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(1)->setY(2)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(1)->setY(3)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(1)->setY(4)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(1)->setY(5)->setHasBeenBombed(false))
         ;
 
         $smallBoat1->setSize('Small')
-                    ->addCoordinate((new Coordinate())->setX(5)->setY(5))
-                    ->addCoordinate((new Coordinate())->setX(6)->setY(5))
-                    ->addCoordinate((new Coordinate())->setX(7)->setY(5))
+                    ->addCoordinate((new Coordinate())->setX(5)->setY(5)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(6)->setY(5)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(7)->setY(5)->setHasBeenBombed(false))
         ;
 
         $smallBoat2->setSize('Small')
-                    ->addCoordinate((new Coordinate())->setX(8)->setY(6))
-                    ->addCoordinate((new Coordinate())->setX(8)->setY(7))
-                    ->addCoordinate((new Coordinate())->setX(8)->setY(8))
+                    ->addCoordinate((new Coordinate())->setX(8)->setY(6)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(8)->setY(7)->setHasBeenBombed(false))
+                    ->addCoordinate((new Coordinate())->setX(8)->setY(8)->setHasBeenBombed(false))
         ;
 
         $manager->persist($largeBoat);

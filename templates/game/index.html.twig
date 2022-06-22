@@ -20,9 +20,19 @@
             <tr>
                 {% for j in 0..9 %}
                     <td>
+                        {% if game[i][j] is defined and game[i][j].hasBeenBombed %}
+                            {% if game[i][j].boat is not null %}
+                                T
+                            {% else %}
+                                X
+                            {% endif %}
+                        {% else %}
+                            
+                        
                         <a href='{{ path("bomb_boat", {x: i, y: j}) }}'>
                             <button>B</button>
                         </a>
+                        {% endif %}
                     </td>
                 {% endfor %}
             </tr>
