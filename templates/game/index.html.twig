@@ -7,11 +7,22 @@
 
     <hr>
 
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <table>
         {% for i in 0..9 %}
             <tr>
                 {% for j in 0..9 %}
                     <td>
+                        <a href='{{ path("bomb_boat", {x: i, y: j}) }}'>
+                            <button>B</button>
+                        </a>
                     </td>
                 {% endfor %}
             </tr>
