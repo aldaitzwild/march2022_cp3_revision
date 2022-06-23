@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Coordinate;
 use App\Repository\CoordinateRepository;
+use App\Service\GameService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,28 +29,14 @@ class GameController extends AbstractController
     public function bomb(
         int $x, 
         int $y, 
-        CoordinateRepository $coordinateRepository): Response
+        CoordinateRepository $coordinateRepository,
+        GameService $gameService
+        ): Response
     {
-        $coordinate = $coordinateRepository->findOneBy(['x' => $x, 'y' => $y]);
+        
+        $gameService->bombACoordinatePlayer($x, $y);
 
-        if($coordinate) {
-            $coordinate->setHasBeenBombed(true);
-            $coordinateRepository->add($coordinate, true);
-            $boat = $coordinate->getBoat();
-            if($boat->isSunk()) {
-                $this->addFlash('success', 'Bateau coulé !!!');
-            }
-
-            $this->addFlash('success', 'bateau touché !');
-        } else {
-            $coordinate = new Coordinate();
-            $coordinate->setX($x);
-            $coordinate->setY($y);
-            $coordinate->setHasBeenBombed(true);
-            $coordinateRepository->add($coordinate, true);
-
-            $this->addFlash('warning', 'coup manqué...');
-        }
+        $gameService->bombACoordinateCPU();
 
         return $this->redirectToRoute('app_game');
     }
